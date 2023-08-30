@@ -76,34 +76,89 @@ export default function HomePage() {
 
     // Check to see if user is connected. If not, connect to their account
     if (!account) {
-      return <button onClick={connectAccount} style={{fontSize: "24px", backgroundColor: "rgba(255, 99, 71, 0.5)"}}>Please connect your Metamask wallet</button>
+      return (
+      <main>
+      <button className="custom-button" onClick={connectAccount}>Please connect your Metamask wallet</button>
+      <style jsx>{`
+      .custom-button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        cursor: pointer;
+        align-items: center;
+      }
+    `}
+    </style>
+      </main>
+      )
     }
 
     return (
-      <div>
-        <p style={{fontSize: "24px", textTransform: "uppercase", border: "2px solid Tomato"}}>Your Account: {account}</p>
-        <button onClick={deposit} style={{fontSize: "24px", backgroundColor: "rgba(255, 99, 71, 0.5)"}}>Deposit 1 ETH</button>
-        <button onClick={withdraw} style={{fontSize: "24px", backgroundColor: "rgba(255, 99, 71, 0.5)"}}>Withdraw 1 ETH</button>
-      </div>
+      <main>
+        <p className="custom-paragraph">Your Account: {account}</p>
+        <button className="custom-button" onClick={deposit}>Deposit 1 ETH</button>
+        <button className="custom-button" onClick={withdraw}>Withdraw 1 ETH</button>
+        <style jsx>{`
+        .custom-paragraph {
+          font-size: 1.2rem;
+          color: #555;
+          margin-bottom: 1.5rem;
+        }
+      .custom-button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        cursor: pointer;
+        align-items: center;
+      }
+    `}
+    </style>
+      </main>
+      
     )
   }
 
   useEffect(() => {getWallet();}, []);
 
   return (
-    <main className="container">
-      <header>
-        <h1>
+    <main className="custom-container">
+      <header className="custom-header">
+        <h1 className="custom-heading">
           || मेटाक्रैफ्टर्स वेबसाइट में आपका स्वागत है! ||
         </h1>
-        <h2>
+        <h2 className="custom-subheading">
           || मैं आपकी मदद कैसे कर सकता हूं ||
         </h2>
       </header>
       {initUser()}
       <style jsx>{`
-        .container {
+        .custom-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          min-height: 100vh;
+          background-color: #ffffe0;
+          font-family: Arial, sans-serif;
+        }
+      
+        .custom-header {
           text-align: center;
+          margin-bottom: 2rem;
+        }
+      
+        .custom-heading {
+          font-size: 2.5rem;
+          color: #FF5722; /* Orange color */
+        }
+      
+        .custom-subheading {
+          font-size: 1.5rem;
+          color: #4CAF50; /* Green color */
         }
       `}
       </style>
